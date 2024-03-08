@@ -1,0 +1,43 @@
+body {
+    color: white;
+    background-color: rgb(14, 14, 14);
+    font-family: 'Courier New', monospace;
+    padding-bottom: 40px;
+}
+
+button {
+    background-color: transparent;
+    color: white;
+    padding: 5px;
+    border: 1px solid white;
+}
+
+main {
+    text-align: center;
+}
+
+button {
+    font-size: 1.5em;
+    font-weight: bold;
+    width: 6ch;
+}
+
+img {
+    max-height: 50vh;
+    max-width: 50vw;
+    border: 2px dashed red;
+}
+
+#msg {
+    margin: 0;
+    font-size: 2em;
+}
+
+.data {
+    margin: 20px;
+}
+
+#object {
+    font-size: 1em;
+    margin: 0;
+}

@@ -1,0 +1,21 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/delete/style.css">
+    <script defer src="/delete/script.js"></script>
+</head>
+
+<body>
+    <main>
+        <p id="msg"></p>
+
+        <div id="content" style="display: none;">
+            <button onclick="deleteObject()" style="background-color: green;">Yes</button>
+            <button onclick="window.location.href = '/'" style="background-color: red;">No</button>
+
+            <div class="data">
+                <p id="object"></p>
+                <img id="preview">
+            </div>
+        </div>
+    </main>
+</body>
