@@ -252,9 +252,8 @@
 
         :global(.icon) {
             margin-right: 2px;
-            width: 1.2em;
-            height: 1.2em;
-            transition: all 150ms;
+            width: 1em;
+            height: 1em;
         }
 
         &:hover :global(.icon) {

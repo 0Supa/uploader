@@ -45,7 +45,6 @@
         right: 2px;
         text-decoration: none;
         opacity: 0.5;
-        transition: opacity 150ms;
 
         &:hover {
             opacity: 1;
