@@ -202,7 +202,7 @@
         margin: 0;
         margin-bottom: 5px;
         border: 2px solid rgb(var(--primary));
-        border-radius: 5px 0 15px 5px;
+        border-radius: 5px 0 5px 5px;
     }
 
     ul {
@@ -217,10 +217,8 @@
     li {
         display: inline;
         &:not(:last-child)::after {
-            content: "";
-            margin: 0 1ch;
-            height: 100%;
-            border-left: 4px dotted rgb(var(--fg));
+            content: "•";
+            margin: 0 0.5ch;
         }
     }
 
