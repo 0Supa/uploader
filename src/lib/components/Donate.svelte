@@ -2,10 +2,10 @@
     import Icon from "./Icon.svelte";
 </script>
 
-<h1 class="title">
+<h2 class="title">
     <Icon class="icon" src="/static/heart.svg"></Icon>
     Support
-</h1>
+</h2>
 
 <p><b>i.supa.codes</b> is an entirely free and ad-less service sustained without profit in mind.<br />Every donation is greatly appreciated!</p>
 
