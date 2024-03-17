@@ -253,7 +253,7 @@
         margin: 20px 0;
         display: flex;
         flex-direction: column;
-        width: 300px;
+        width: 320px;
     }
 
     .terms {

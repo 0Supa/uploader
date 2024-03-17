@@ -4,6 +4,7 @@
     import Dialog from "./Dialog.svelte";
     import { uploadedFiles, saveFiles, loadFiles } from "./files";
     import { dev } from "$app/environment";
+    import Icon from "./Icon.svelte";
 
     /** @type {Boolean} */
     export let isNewUpload;
@@ -82,7 +83,12 @@
     <div class="name" title={file.name}>{file.name}</div>
     <div class="details">
         <input tabindex="0" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value="{window.location.origin}/{file.id}{$userSettings.appendFileExt ? file.ext : ''}" />
-        <button class="alert delete-btn" on:click={deleteFile}>Delete</button>
+        <button class="alert" on:click={deleteFile}>
+            <Icon class="icon" src="static/delete.svg"></Icon>
+        </button>
+        <button class="default" on:click={() => window.open(`/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`)}>
+            <Icon class="icon" src="static/open_in_new.svg"></Icon>
+        </button>
     </div>
     <div class="footer">
         <div class="mimetype">{file.type}</div>
@@ -112,6 +118,18 @@
             border-radius: 5px;
             outline: 2px solid rgb(var(--bg2));
             margin: 2px 0;
+
+            button {
+                border-radius: 0;
+                &:last-child {
+                    border-radius: 0 5px 5px 0;
+                }
+                :global(.icon) {
+                    vertical-align: middle;
+                    width: 1.8em;
+                    height: 1.8em;
+                }
+            }
         }
 
         .name {
@@ -151,25 +169,29 @@
         outline: none;
     }
 
-    input[type="text"],
-    button {
+    input[type="text"] {
         padding: 5px;
     }
 
     .alert {
         background-color: rgba(255, 0, 0, 0.2);
-    }
-
-    .alert:hover {
-        background-color: rgba(255, 0, 0, 0.4);
+        &:hover {
+            background-color: rgba(255, 0, 0, 0.4);
+        }
     }
 
     .ok {
         background-color: rgba(0, 255, 0, 0.2);
+        &:hover {
+            background-color: rgba(0, 255, 0, 0.4);
+        }
     }
 
-    .ok:hover {
-        background-color: rgba(0, 255, 0, 0.4);
+    .default {
+        background-color: rgb(var(--bg_h));
+        &:hover {
+            background: rgb(var(--bg2));
+        }
     }
 
     .footer {
@@ -209,10 +231,6 @@
                 padding: 0.25em 1.5em;
             }
         }
-    }
-
-    .delete-btn {
-        border-radius: 0 5px 5px 0;
     }
 
     .highlight {
