@@ -1,4 +1,6 @@
 <script>
+    import Icon from "./Icon.svelte";
+
     /** @type {HTMLDialogElement} */
     export let node;
 </script>
@@ -11,7 +13,7 @@
             e.preventDefault();
             node.close();
         }}>
-        <i class="icon"></i>
+        <Icon src="/static/close.svg"></Icon>
     </a>
     <slot />
 </dialog>
@@ -46,14 +48,5 @@
         &:hover {
             opacity: 1;
         }
-    }
-
-    .icon {
-        background-color: rgb(var(--fg2));
-        mask-image: url("/static/close.svg");
-        -webkit-mask-image: url("/static/close.svg");
-        width: 100%;
-        height: 100%;
-        display: inline-block;
     }
 </style>

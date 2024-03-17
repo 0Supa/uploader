@@ -181,10 +181,13 @@
             }}>Terms and Privacy Policy</a>
     </p>
     <p>Max file size: 100 MB<br />Drag or paste files anywhere on this page to start uploading</p>
-    <label class="upload-label">
-        <input bind:this={fileInput} on:change={fileInputChange} type="file" id="file-input" {disabled} multiple />
-        Choose Files
-    </label>
+
+    <div class="upload-area">
+        <label class="upload-label">
+            <input bind:this={fileInput} on:change={fileInputChange} type="file" id="file-input" {disabled} multiple />
+            Choose Files
+        </label>
+    </div>
 
     {#if uploadProgress !== null}
         <p>Uploading... ({uploadProgress}%)</p>
@@ -218,6 +221,10 @@
 
     #file-input {
         display: none;
+    }
+
+    .upload-area {
+        display: flex;
     }
 
     .upload-label {

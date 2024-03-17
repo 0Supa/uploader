@@ -3,11 +3,11 @@ body {
 }
 
 a {
-    color: #4a8ecc;
+    color: rgb(var(--blue, 74, 142, 204));
     text-decoration: none;
 }
 
 a:hover {
-    color: #08c;
+    color: rgb(var(--sky, 0, 136, 204));
     text-decoration: underline;
 }

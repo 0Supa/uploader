@@ -1,15 +1,22 @@
 <script>
     import { page } from "$app/stores";
+    import Icon from "$lib/components/Icon.svelte";
     import { loadSettings, saveSettings, userSettings } from "$lib/userSettings.js";
     import { onMount } from "svelte";
+
+    /** @typedef {import("$lib/types.js").Theme} Theme */
+
+    /** @type {Theme[]} */
+    const themes = ["light", "dark", "amoled", "catppuccin"];
 
     onMount(() => {
         loadSettings();
     });
 
-    const changeTheme = (/** @type {MouseEvent} */ e) => {
+    const changeTheme = (/** @type {MouseEvent} */ e, /** @type {Theme} */ theme) => {
         e.preventDefault();
-        $userSettings.theme = $userSettings.theme === "light" ? "dark" : "light";
+
+        $userSettings.theme = theme;
         saveSettings();
     };
 </script>
@@ -28,15 +35,29 @@
         <h1 class="name">{$page.url.hostname}</h1>
 
         <nav>
-            <ul>
-                <li>
-                    <a aria-current={$page.url.pathname === "/" ? "page" : undefined} href="/">home</a>
-                </li>
-                <li>
-                    <a aria-current={$page.url.pathname === "/uploaders" ? "page" : undefined} href="/uploaders">uploaders</a>
-                </li>
-            </ul>
-            <a class="link tm" href="https://supa.codes/" target="_blank">supa.codes&trade;</a>
+            <div class="nav-left">
+                <ul>
+                    <li>
+                        <a aria-current={$page.url.pathname === "/" ? "page" : undefined} href="/">Home</a>
+                    </li>
+                    <li>
+                        <a aria-current={$page.url.pathname === "/uploaders" ? "page" : undefined} href="/uploaders">Uploaders</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <a href="https://github.com/0Supa/uploader" target="_blank">GitHub</a>
+                    </li>
+                    <li>
+                        <a class="support-btn" href="https://www.twitch.tv/subs/u_pa__" target="_blank">
+                            <Icon class="icon" src="/static/heart.svg"></Icon>
+                            Support
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </nav>
         <hr />
 
@@ -44,9 +65,11 @@
 
         <details class="settings">
             <summary>Settings</summary>
-            <div>
-                <div class="option">
-                    <a href="/" on:click={changeTheme}>{$userSettings.theme === "light" ? "Dark" : "Light"} theme?</a>
+            <div class="container">
+                <div class="option themes">
+                    {#each themes as theme}
+                        <a href="/" class="theme-name" on:click={(e) => changeTheme(e, theme)}>{theme}</a>
+                    {/each}
                 </div>
                 <label class="option">
                     <input type="checkbox" id="file-ext" name="file-ext" bind:checked={$userSettings.appendFileExt} on:change={saveSettings} />
@@ -138,6 +161,11 @@
         summary {
             cursor: pointer;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     .option {
@@ -146,8 +174,17 @@
         max-width: max-content;
     }
 
-    .tm {
-        float: right;
+    .themes {
+        gap: 1ch;
+        margin: 5px 0;
+    }
+
+    nav {
+        display: flex;
+    }
+
+    .nav-left {
+        margin-right: auto;
     }
 
     .tooltip {
@@ -165,21 +202,51 @@
         margin: 0;
         margin-bottom: 5px;
         border: 2px solid rgb(var(--primary));
-        border-radius: 5px;
+        border-radius: 5px 0 15px 5px;
     }
 
     ul {
-        display: inline;
+        display: flex;
+        height: 22px;
+        flex-direction: row;
         padding: 0;
         margin: 0;
         list-style-type: none;
+    }
 
-        li {
-            display: inline;
-            &:not(:last-child)::after {
-                content: " // ";
-                color: rgb(var(--fg));
-            }
+    li {
+        display: inline;
+        &:not(:last-child)::after {
+            content: "";
+            margin: 0 1ch;
+            height: 100%;
+            border-left: 4px dotted rgb(var(--fg));
         }
+    }
+
+    .support-btn {
+        color: rgb(var(--fg2));
+        display: inline-flex;
+        height: 100%;
+        font-weight: 500;
+        background-color: rgb(var(--bg2));
+        border-radius: 5px 5px 0 0;
+        align-items: center;
+        padding: 0 4px;
+
+        :global(.icon) {
+            margin-right: 2px;
+            width: 1.2em;
+            height: 1.2em;
+            transition: all 150ms;
+        }
+
+        &:hover :global(.icon) {
+            background-color: #c81919;
+        }
+    }
+
+    .theme-name {
+        text-transform: capitalize;
     }
 </style>

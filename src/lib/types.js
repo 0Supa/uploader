@@ -11,12 +11,14 @@
  * @property {String} checksum
  */
 
+/** @typedef {"catppuccin" | "dark" | "light" | "amoled"} Theme */
+
 /**
  * @typedef {Object} UserSettings
  * @property {Boolean} appendFileExt
  * @property {Boolean} rememberFileHistory
  * @property {Boolean} fileContentDisposition
- * @property {"dark" | "light"} theme
+ * @property {Theme} theme
  */
 
-module.exports = {};
+export default {};
