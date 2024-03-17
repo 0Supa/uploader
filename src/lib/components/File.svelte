@@ -86,7 +86,7 @@
         <button class="alert" on:click={deleteFile}>
             <Icon class="icon" src="static/delete.svg"></Icon>
         </button>
-        <button class="default" on:click={() => window.open(`/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`)}>
+        <button class="default" on:click={() => window.open(`/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`, "file-link")}>
             <Icon class="icon" src="static/open_in_new.svg"></Icon>
         </button>
     </div>
