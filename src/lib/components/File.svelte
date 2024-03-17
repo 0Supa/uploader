@@ -84,10 +84,10 @@
     <div class="details">
         <input tabindex="0" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value="{window.location.origin}/{file.id}{$userSettings.appendFileExt ? file.ext : ''}" />
         <button class="alert" on:click={deleteFile}>
-            <Icon class="icon" src="static/delete.svg"></Icon>
+            <Icon class="icon" src="/static/delete.svg"></Icon>
         </button>
         <button class="default" on:click={() => window.open(`/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`, "file-link")}>
-            <Icon class="icon" src="static/open_in_new.svg"></Icon>
+            <Icon class="icon" src="/static/open_in_new.svg"></Icon>
         </button>
     </div>
     <div class="footer">
