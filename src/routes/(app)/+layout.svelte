@@ -67,6 +67,7 @@
             <summary>Settings</summary>
             <div class="container">
                 <div class="option themes">
+                    <span>Theme:</span>
                     {#each themes as theme}
                         <a href="/" class="theme-name" on:click={(e) => changeTheme(e, theme)}>{theme}</a>
                     {/each}
