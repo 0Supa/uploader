@@ -36,10 +36,10 @@
         width: 1.5rem;
         height: 1.5rem;
         cursor: pointer;
-        position: sticky;
-        top: 0;
+        position: absolute;
+        top: 2px;
+        right: 2px;
         text-decoration: none;
-        float: right;
         opacity: 0.5;
         transition: opacity 150ms;
 
