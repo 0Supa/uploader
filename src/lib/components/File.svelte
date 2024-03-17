@@ -70,7 +70,7 @@
 
 <Dialog bind:node={deleteDialog}>
     <div class="delete-dialog">
-        <p>Are you sure you want to delete <i>{file.name}</i>?</p>
+        <p>Are you sure you want to delete <span class="highlight">{file.name}</span>?</p>
         <div class="option">
             <button on:click={() => deleteDialog.close("confirm")} class="alert">Yes</button>
             <button on:click={() => deleteDialog.close("cancel")} class="ok">No</button>
@@ -191,9 +191,11 @@
         max-width: 500px;
         padding: 10px;
         text-align: center;
+        overflow: hidden;
 
         p {
-            margin: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .option {
@@ -211,5 +213,13 @@
 
     .delete-btn {
         border-radius: 0 5px 5px 0;
+    }
+
+    .highlight {
+        color: rgb(var(--fg2));
+        background-color: rgb(var(--bg2));
+        border-radius: 5px;
+        padding: 0 2px;
+        white-space: nowrap;
     }
 </style>
