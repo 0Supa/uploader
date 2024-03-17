@@ -8,6 +8,7 @@
     import { onMount, tick } from "svelte";
     import File from "$lib/components/File.svelte";
     import { dev } from "$app/environment";
+    import Donate from "$lib/components/Donate.svelte";
 
     let mountDate = Date.now();
 

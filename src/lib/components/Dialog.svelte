@@ -15,7 +15,9 @@
         }}>
         <Icon src="/static/close.svg"></Icon>
     </a>
-    <slot />
+    <section>
+        <slot />
+    </section>
 </dialog>
 
 <style lang="scss">
@@ -48,5 +50,9 @@
         &:hover {
             opacity: 1;
         }
+    }
+
+    section {
+        margin: 0 5px;
     }
 </style>

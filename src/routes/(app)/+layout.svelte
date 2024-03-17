@@ -3,11 +3,16 @@
     import Icon from "$lib/components/Icon.svelte";
     import { loadSettings, saveSettings, userSettings } from "$lib/userSettings.js";
     import { onMount } from "svelte";
+    import Dialog from "$lib/components/Dialog.svelte";
+    import Donate from "$lib/components/Donate.svelte";
 
     /** @typedef {import("$lib/types.js").Theme} Theme */
 
     /** @type {Theme[]} */
     const themes = ["light", "dark", "amoled", "catppuccin"];
+
+    /** @type {HTMLDialogElement} */
+    let donateDialog;
 
     onMount(() => {
         loadSettings();
@@ -32,6 +37,12 @@
 
 <main>
     <div class="wrapper">
+        <Dialog bind:node={donateDialog}>
+            <section>
+                <Donate></Donate>
+            </section>
+        </Dialog>
+
         <h1 class="name">{$page.url.hostname}</h1>
 
         <nav>
@@ -51,7 +62,13 @@
                         <a href="https://github.com/0Supa/uploader" target="_blank">GitHub</a>
                     </li>
                     <li>
-                        <a class="support-btn" href="https://www.twitch.tv/subs/u_pa__" target="_blank">
+                        <a
+                            class="support-btn"
+                            href="/"
+                            on:click={(e) => {
+                                e.preventDefault();
+                                donateDialog.showModal();
+                            }}>
                             <Icon class="icon" src="/static/heart.svg"></Icon>
                             Support
                         </a>

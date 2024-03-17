@@ -211,7 +211,7 @@
     .delete-dialog {
         font-size: 1.1rem;
         max-width: 500px;
-        padding: 10px;
+        padding: 10px 0;
         text-align: center;
         overflow: hidden;
 
