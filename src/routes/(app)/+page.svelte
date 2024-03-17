@@ -216,7 +216,8 @@
         opacity: 0.5;
         visibility: hidden;
         display: block;
-        background: gray url("/static/upload.png") no-repeat center;
+        background: gray url("/static/upload.svg") no-repeat center;
+        background-size: 30%;
     }
 
     #file-input {
