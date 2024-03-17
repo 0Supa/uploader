@@ -4,6 +4,12 @@
 - [gachi.gay](https://gachi.gay/)
 - [femboy.beauty](https://femboy.beauty/)
 
+## License
+
+### TL;DR
+
+The AGPL 3.0 license requires anyone who modifies or distributes the software to make their source code available to end-users when the software is used over a network. It's like the GPL but with extra coverage for network usage.
+
 ## Developing
 
 Once you've cloned the project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
