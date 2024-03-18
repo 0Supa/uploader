@@ -40,9 +40,10 @@
         width: 1.5rem;
         height: 1.5rem;
         cursor: pointer;
-        position: absolute;
-        top: 2px;
-        right: 2px;
+        position: sticky;
+        float: right;
+        top: 0;
+        right: 0;
         text-decoration: none;
         opacity: 0.5;
 
