@@ -57,6 +57,8 @@
         }
     };
 
+    $: fileUrl = `${window.location.origin}/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`;
+
     onMount(async () => {
         if (isNewUpload) {
             urlInput.focus();
@@ -82,11 +84,11 @@
 <div class="file">
     <div class="name" title={file.name}>{file.name}</div>
     <div class="details">
-        <input tabindex="0" aria-label="Open link" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value="{window.location.origin}/{file.id}{$userSettings.appendFileExt ? file.ext : ''}" />
+        <input tabindex="0" aria-label="Open link" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value={fileUrl} />
         <button class="alert" on:click={deleteFile}>
             <Icon class="icon" src="/static/delete.svg"></Icon>
         </button>
-        <button class="default" aria-label="Delete" on:click={() => window.open(`/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`, "file-link")}>
+        <button class="default" aria-label="Delete" on:click={() => window.open(fileUrl, "file-link")}>
             <Icon class="icon" src="/static/open_in_new.svg"></Icon>
         </button>
     </div>
