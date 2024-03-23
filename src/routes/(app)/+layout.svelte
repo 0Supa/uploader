@@ -91,7 +91,7 @@
                 </div>
                 <label class="option">
                     <input type="checkbox" id="file-ext" name="file-ext" bind:checked={$userSettings.appendFileExt} on:change={saveSettings} />
-                    Append file extension at the end of URLs
+                    Append file extension to URL
                 </label>
                 <label class="option">
                     <input type="checkbox" id="file-history" name="file-history" bind:checked={$userSettings.rememberFileHistory} on:change={saveSettings} />
