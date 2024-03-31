@@ -11,7 +11,7 @@
 
 <p>
     <b>Bitcoin:</b><br />
-    <code>bc1qxnvm9cpmphnzqn36dyktkqgfay7d9g3mz8y8fv</code>
+    <code>bc1qj4f0r9fwyjptrpc22fhed29h3sd8ss8m6r7jvj</code>
 </p>
 
 <p>
