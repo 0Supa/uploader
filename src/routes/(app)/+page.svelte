@@ -6,8 +6,9 @@
     import { userSettings } from "$lib/userSettings";
     import { uploadedFiles, saveFiles, loadFiles } from "$lib/components/files";
     import { onMount } from "svelte";
-    import File from "$lib/components/File.svelte";
+    import FileDisplay from "$lib/components/File.svelte";
     import { dev } from "$app/environment";
+    import { cleanBuffer } from "$lib/utils.js";
 
     let mountDate = Date.now();
 
@@ -36,12 +37,30 @@
         errorDialog.showModal();
     };
 
+    const removeExif = (/** @type {File} */ file) => {
+        return new Promise((resolve, reject) => {
+            const fr = new FileReader();
+            fr.onload = () => {
+                if (!(fr.result instanceof ArrayBuffer))
+                    return reject("Failed reading image buffer");
+
+                const cleanedBuffer = cleanBuffer(fr.result);
+                const blob = new Blob([cleanedBuffer], { type: file.type });
+                const newFile = new File([blob], file.name, {
+                    type: file.type,
+                });
+                resolve(newFile);
+            };
+            fr.readAsArrayBuffer(file);
+        });
+    };
+
     /** @type {Array<Number>} */
     let totalProgress = [];
     let filesCount = 0;
     let completed = 0;
 
-    const upload = (/** @type {FileList} */ files) => {
+    async function upload(/** @type {FileList} */ files) {
         disabled = true;
 
         const percentComplete = () => {
@@ -54,11 +73,20 @@
         for (const file of files) {
             const progressId = filesCount++;
             const formData = new FormData();
-            formData.append("file", file);
+
+            if ($userSettings.stripExif && file.type.startsWith("image/")) {
+                try {
+                    formData.append("file", await removeExif(file));
+                } catch (err) {
+                    return notifyError(`Error reading "${file.name}":\n${err}`);
+                }
+            } else {
+                formData.append("file", file);
+            }
 
             const xhr = new XMLHttpRequest();
 
-            xhr.addEventListener("load", async () => {
+            xhr.addEventListener("load", () => {
                 try {
                     if (++completed >= filesCount) uploadProgress = null;
 
@@ -128,7 +156,7 @@
             xhr.send(formData);
         }
         disabled = false;
-    };
+    }
 
     const fileInputChange = () => {
         if (!fileInput.files) return;
@@ -229,13 +257,13 @@
 
 <div class="uploaded-files">
     {#each $uploadedFiles as file (file.id)}
-        <File
+        <FileDisplay
             isNewUpload={(() => {
                 return file.date > mountDate;
             })()}
             {notifyError}
             {file}
-        ></File>
+        ></FileDisplay>
     {/each}
 </div>
 

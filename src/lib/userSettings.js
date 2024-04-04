@@ -5,6 +5,7 @@ const defaultSettings = {
     "appendFileExt": false,
     "rememberFileHistory": true,
     "fileContentDisposition": true,
+    "stripExif": true,
     "theme": "dark"
 }
 

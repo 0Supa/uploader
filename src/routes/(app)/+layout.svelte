@@ -153,6 +153,16 @@
                         >( ? )</span
                     >
                 </label>
+                <label class="option">
+                    <input
+                        type="checkbox"
+                        id="file-stripexif"
+                        name="file-stripexif"
+                        bind:checked={$userSettings.stripExif}
+                        on:change={saveSettings}
+                    />
+                    Strip Exif data from image
+                </label>
             </div>
         </details>
 

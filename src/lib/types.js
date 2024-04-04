@@ -18,6 +18,7 @@
  * @property {Boolean} appendFileExt
  * @property {Boolean} rememberFileHistory
  * @property {Boolean} fileContentDisposition
+ * @property {Boolean} stripExif
  * @property {Theme} theme
  */
 
