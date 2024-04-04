@@ -5,10 +5,9 @@
     import Errors from "$lib/components/Errors.svelte";
     import { userSettings } from "$lib/userSettings";
     import { uploadedFiles, saveFiles, loadFiles } from "$lib/components/files";
-    import { onMount, tick } from "svelte";
+    import { onMount } from "svelte";
     import File from "$lib/components/File.svelte";
     import { dev } from "$app/environment";
-    import Donate from "$lib/components/Donate.svelte";
 
     let mountDate = Date.now();
 
@@ -46,7 +45,10 @@
         disabled = true;
 
         const percentComplete = () => {
-            return totalProgress.length ? totalProgress.reduce((a, b) => a + b, 0) / totalProgress.length : 0;
+            return totalProgress.length
+                ? totalProgress.reduce((a, b) => a + b, 0) /
+                      totalProgress.length
+                : 0;
         };
 
         for (const file of files) {
@@ -61,13 +63,19 @@
                     if (++completed >= filesCount) uploadProgress = null;
 
                     if (xhr.status === 413) {
-                        return notifyError(`Failed uploading "${file.name}": File too large`);
+                        return notifyError(
+                            `Failed uploading "${file.name}": File too large`,
+                        );
                     } else if (xhr.status !== 200) {
                         try {
                             const res = JSON.parse(xhr.response);
-                            return notifyError(`Error uploading "${file.name}": (${xhr.status})\n${JSON.stringify(res, null, 4)}`);
+                            return notifyError(
+                                `Error uploading "${file.name}": (${xhr.status})\n${JSON.stringify(res, null, 4)}`,
+                            );
                         } catch (_) {
-                            return notifyError(`Error uploading "${file.name}": (${xhr.status})`);
+                            return notifyError(
+                                `Error uploading "${file.name}": (${xhr.status})`,
+                            );
                         }
                     }
 
@@ -90,17 +98,25 @@
                     });
                     saveFiles();
                 } catch (err) {
-                    notifyError(`Unexpected error uploading "${file.name}": (${xhr.status})\n${err}`);
+                    notifyError(
+                        `Unexpected error uploading "${file.name}": (${xhr.status})\n${err}`,
+                    );
                 }
             });
 
             xhr.addEventListener("error", (e) => {
-                notifyError(`Failed uploading "${file.name}": ${e.loaded} bytes transferred`);
+                notifyError(
+                    `Failed uploading "${file.name}": ${e.loaded} bytes transferred`,
+                );
                 totalProgress[progressId] = 100;
                 if (++completed >= files.length) uploadProgress = null;
             });
 
-            xhr.open("POST", `${dev ? "http://localhost:8787" : ""}/api/upload${!$userSettings.fileContentDisposition ? "?skip-cd=true" : ""}`, true);
+            xhr.open(
+                "POST",
+                `${dev ? "http://localhost:8787" : ""}/api/upload${!$userSettings.fileContentDisposition ? "?skip-cd=true" : ""}`,
+                true,
+            );
 
             xhr.upload?.addEventListener("progress", (e) => {
                 if (!e.lengthComputable) return;
@@ -154,7 +170,12 @@
     });
 </script>
 
-<svelte:window on:dragleave={dragLeave} on:dragover={dragFiles} on:dragenter={dragFiles} on:drop={dropFiles} />
+<svelte:window
+    on:dragleave={dragLeave}
+    on:dragover={dragFiles}
+    on:dragenter={dragFiles}
+    on:drop={dropFiles}
+/>
 
 <svelte:body on:paste={pasteFiles} />
 
@@ -179,13 +200,24 @@
             on:click={(e) => {
                 e.preventDefault();
                 tosDialog.showModal();
-            }}>Terms and Privacy Policy</a>
+            }}>Terms and Privacy Policy</a
+        >
     </p>
-    <p>Max file size: 100 MB<br />Drag or paste files anywhere on this page to start uploading</p>
+    <p>
+        Max file size: 100 MB<br />Drag or paste files anywhere on this page to
+        start uploading
+    </p>
 
     <div class="upload-area">
         <label class="upload-label">
-            <input bind:this={fileInput} on:change={fileInputChange} type="file" id="file-input" {disabled} multiple />
+            <input
+                bind:this={fileInput}
+                on:change={fileInputChange}
+                type="file"
+                id="file-input"
+                {disabled}
+                multiple
+            />
             Choose Files
         </label>
     </div>
@@ -202,7 +234,8 @@
                 return file.date > mountDate;
             })()}
             {notifyError}
-            {file}></File>
+            {file}
+        ></File>
     {/each}
 </div>
 
