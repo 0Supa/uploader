@@ -20,8 +20,8 @@ export const loadSettings = () => {
     /** @type {import('$lib/types.js').UserSettings} */
     const savedSettings = JSON.parse(userSettingsVal);
 
-    userSettings.update(() => {
-        return savedSettings;
+    userSettings.update((def) => {
+        return Object.assign(def, savedSettings);
     })
 };
 
