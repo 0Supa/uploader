@@ -1,7 +1,11 @@
 <script>
     import { page } from "$app/stores";
     import Icon from "$lib/components/Icon.svelte";
-    import { loadSettings, saveSettings, userSettings } from "$lib/userSettings.js";
+    import {
+        loadSettings,
+        saveSettings,
+        userSettings,
+    } from "$lib/userSettings.js";
     import { onMount } from "svelte";
     import Dialog from "$lib/components/Dialog.svelte";
     import Donate from "$lib/components/Donate.svelte";
@@ -18,7 +22,10 @@
         loadSettings();
     });
 
-    const changeTheme = (/** @type {MouseEvent} */ e, /** @type {Theme} */ theme) => {
+    const changeTheme = (
+        /** @type {MouseEvent} */ e,
+        /** @type {Theme} */ theme,
+    ) => {
         e.preventDefault();
 
         $userSettings.theme = theme;
@@ -31,8 +38,12 @@
         >{$page.url.hostname}{(() => {
             const path = $page.url.pathname.slice(1);
             return path ? ` / ${path}` : "";
-        })()}</title>
-    <link rel="stylesheet" href="/static/styles/{$userSettings.theme || 'dark'}.css" />
+        })()}</title
+    >
+    <link
+        rel="stylesheet"
+        href="/static/styles/{$userSettings.theme || 'dark'}.css"
+    />
 </svelte:head>
 
 <main>
@@ -49,17 +60,30 @@
             <div class="nav-left">
                 <ul>
                     <li>
-                        <a aria-current={$page.url.pathname === "/" ? "page" : undefined} href="/">Home</a>
+                        <a
+                            aria-current={$page.url.pathname === "/"
+                                ? "page"
+                                : undefined}
+                            href="/">Home</a
+                        >
                     </li>
                     <li>
-                        <a aria-current={$page.url.pathname === "/uploaders" ? "page" : undefined} href="/uploaders">Uploaders</a>
+                        <a
+                            aria-current={$page.url.pathname === "/uploaders"
+                                ? "page"
+                                : undefined}
+                            href="/uploaders">Uploaders</a
+                        >
                     </li>
                 </ul>
             </div>
             <div>
                 <ul>
                     <li>
-                        <a href="https://github.com/0Supa/uploader" target="_blank">GitHub</a>
+                        <a
+                            href="https://github.com/0Supa/uploader"
+                            target="_blank">GitHub</a
+                        >
                     </li>
                     <li>
                         <a
@@ -68,7 +92,8 @@
                             on:click={(e) => {
                                 e.preventDefault();
                                 donateDialog.showModal();
-                            }}>
+                            }}
+                        >
                             <Icon class="icon" src="/static/heart.svg"></Icon>
                             Support
                         </a>
@@ -86,21 +111,47 @@
                 <div class="option themes">
                     <span>Theme:</span>
                     {#each themes as theme}
-                        <a href="/" class="theme-name" on:click={(e) => changeTheme(e, theme)}>{theme}</a>
+                        <a
+                            href="/"
+                            class="theme-name"
+                            on:click={(e) => changeTheme(e, theme)}>{theme}</a
+                        >
                     {/each}
                 </div>
                 <label class="option">
-                    <input type="checkbox" id="file-ext" name="file-ext" bind:checked={$userSettings.appendFileExt} on:change={saveSettings} />
+                    <input
+                        type="checkbox"
+                        id="file-ext"
+                        name="file-ext"
+                        bind:checked={$userSettings.appendFileExt}
+                        on:change={saveSettings}
+                    />
                     Append file extension to URL
                 </label>
                 <label class="option">
-                    <input type="checkbox" id="file-history" name="file-history" bind:checked={$userSettings.rememberFileHistory} on:change={saveSettings} />
+                    <input
+                        type="checkbox"
+                        id="file-history"
+                        name="file-history"
+                        bind:checked={$userSettings.rememberFileHistory}
+                        on:change={saveSettings}
+                    />
                     Remember upload history, stored locally
                 </label>
                 <label class="option">
-                    <input type="checkbox" id="file-disposition" name="file-disposition" bind:checked={$userSettings.fileContentDisposition} on:change={saveSettings} />
+                    <input
+                        type="checkbox"
+                        id="file-disposition"
+                        name="file-disposition"
+                        bind:checked={$userSettings.fileContentDisposition}
+                        on:change={saveSettings}
+                    />
                     Save remote file with its original name&nbsp;
-                    <span class="tooltip" title="Enabling this will show your file's original (local) name to other users in supported browsers; e.g. when saving.">( ? )</span>
+                    <span
+                        class="tooltip"
+                        title="Enabling this will show your file's original (local) name to other users in supported browsers; e.g. when saving."
+                        >( ? )</span
+                    >
                 </label>
             </div>
         </details>
