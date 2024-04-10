@@ -293,7 +293,7 @@
     .upload-label {
         font-size: 1.2rem;
         font-weight: bold;
-        width: 130px;
+        min-width: 130px;
         text-align: center;
         color: rgb(var(--fg2));
         text-shadow: 0 0 2px rgb(var(--bg0));
