@@ -161,7 +161,7 @@
                         bind:checked={$userSettings.stripExif}
                         on:change={saveSettings}
                     />
-                    Strip Exif data from image
+                    Entirely strip Exif data from image
                 </label>
             </div>
         </details>
