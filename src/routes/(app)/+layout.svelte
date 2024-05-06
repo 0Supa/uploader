@@ -54,7 +54,7 @@
             </section>
         </Dialog>
 
-        <h1 class="name">{$page.url.hostname}</h1>
+        <h1 class="name pride">{$page.url.hostname}</h1>
 
         <nav>
             <div class="nav-left">
@@ -272,9 +272,12 @@
     }
 
     .name {
+        display: inline-block;
         margin: 0;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         overflow: auto;
+        font-weight: 500;
+        text-shadow: 1px 1px 1px rgb(var(--fg) / 0.3);
     }
 
     hr {
@@ -324,5 +327,19 @@
 
     .theme-name {
         text-transform: capitalize;
+    }
+
+    .pride {
+        background-image: linear-gradient(
+            to right,
+            #e50000,
+            #ff8d00,
+            #ffee00,
+            #028121,
+            #004cff,
+            #770088
+        );
+        background-clip: text;
+        color: transparent;
     }
 </style>
