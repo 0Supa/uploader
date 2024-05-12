@@ -297,7 +297,9 @@
     }
 
     li {
-        display: inline;
+        display: inline-flex;
+        height: 100%;
+        align-items: center;
         &:not(:last-child)::after {
             content: "•";
             margin: 0 0.5ch;
@@ -306,7 +308,7 @@
 
     .support-btn {
         color: rgb(var(--fg2));
-        display: inline-flex;
+        display: flex;
         height: 100%;
         font-weight: 500;
         background-color: rgb(var(--bg2));
