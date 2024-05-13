@@ -11,11 +11,11 @@
 1. Files are accessible cross-domain, content is identical.
 2. File extensions (delimited by `.`) are optional and ignored.
 3. Any parts of the URL after the first segment (delimited by `/`) are ignored.
-4. Any subdomain may be used for root domains.
+4. Any subdomain may be used on root domains.
 
 **These are all valid examples and link to the same resource:**
 - `https://kappa.lol/mXYBA`
-- `https://gachi.gay/mXYBA.png`
+- `https://billy.gachi.gay/mXYBA.png`
 - `https://i.supa.codes/mXYBA/Kappa.png`
 
 ## License
