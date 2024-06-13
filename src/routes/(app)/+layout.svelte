@@ -9,6 +9,7 @@
     import { onMount } from "svelte";
     import Dialog from "$lib/components/Dialog.svelte";
     import Donate from "$lib/components/Donate.svelte";
+    import umami from "$lib/umami.js";
 
     /** @typedef {import("$lib/types.js").Theme} Theme */
 
@@ -44,6 +45,11 @@
         rel="stylesheet"
         href="/static/styles/{$userSettings.theme || 'dark'}.css"
     />
+    <script
+        defer
+        src="https://umami.supa.codes/script.js"
+        data-website-id={umami[$page.url.hostname]}
+    ></script>
 </svelte:head>
 
 <main>
