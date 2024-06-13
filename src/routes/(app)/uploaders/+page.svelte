@@ -32,7 +32,7 @@
     <details open>
         <summary>ShareX</summary>
         <p>
-            <a href={sharexConfigURL.toString()}>Click here</a> to download the ShareX 11.5+ config
+            <a href={sharexConfigURL.toString()} data-umami-event="sharex-download">Click here</a> to download the ShareX 11.5+ config
         </p>
     </details>
 </div>
@@ -68,7 +68,7 @@
 <div>
     <details>
         <summary>
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.flxrs.dankchat&ref=i.supa.codes">DankChat</a>
+            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.flxrs.dankchat&ref=i.supa.codes" data-umami-event="dankchat-link">DankChat</a>
         </summary>
         <p>Native Twitch chat client for mobile -- <br />Same configuration format as Chatterino, uploader defaults to <a target="_blank" href="https://kappa.lol/">kappa.lol</a>.</p>
     </details>
@@ -123,7 +123,7 @@
 </div>
 
 <div>
-    <p>Looking for a cool song/video queue manager for your Twitch chat?<br />Either way, check out <a href="https://chat.vote/playlist/?ref=i.supa.codes" target="_blank">chat.vote/playlist</a>!</p>
+    <p>Looking for a cool song/video queue manager for your Twitch chat?<br />Either way, check out <a href="https://chat.vote/playlist/?ref=i.supa.codes" target="_blank" data-umami-event="badoge-playlist-link">chat.vote/playlist</a>!</p>
 </div>
 
 <style>

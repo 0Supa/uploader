@@ -20,7 +20,7 @@
 </p>
 
 <p>
-    <a href="https://www.twitch.tv/subs/supelle" target="_blank"><b>Subscribe on Twitch</b></a>
+    <a href="https://www.twitch.tv/subs/supelle" target="_blank" data-umami-event="twitch-sub-link"><b>Subscribe on Twitch</b></a>
 </p>
 
 <style lang="scss">
