@@ -245,6 +245,8 @@
                 id="file-input"
                 {disabled}
                 multiple
+                capture
+                accept="image/*,video/*,audio/*,*/*"
             />
             Choose Files
         </label>
