@@ -3,7 +3,8 @@
     export let color = "rgb(var(--fg2))";
 </script>
 
-<i class="icon {$$restProps.class}" style="--i: url({src}); --c: {color};"></i>
+<i class="icon {$$restProps.class || ''}" style="--i: url({src}); --c: {color};"
+></i>
 
 <style>
     .icon {
