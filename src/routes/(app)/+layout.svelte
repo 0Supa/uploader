@@ -286,7 +286,6 @@
     .name {
         display: inline-block;
         margin: 0;
-        margin-bottom: 5px;
         overflow: auto;
         font-weight: 500;
         text-shadow: 1px 1px 1px rgb(var(--fg) / 0.3);
@@ -294,8 +293,9 @@
 
     hr {
         margin: 1rem 0 1rem;
-        border: 1px solid rgb(var(--primary));
-        border-radius: 5px 0 5px 5px;
+        border: 2px solid rgb(var(--primary));
+        border-radius: 0.45rem;
+        margin: 0.35rem 0 1rem 0;
     }
 
     ul {
@@ -323,9 +323,9 @@
         height: 100%;
         font-weight: 500;
         background-color: rgb(var(--bg2));
-        border-radius: 0.45rem;
+        border-radius: 0.25rem;
         align-items: center;
-        padding: 0.35rem 1rem 0.35rem 1rem;
+        padding: 0 0.35rem;
 
         outline: 1px solid rgb(var(--outl2));
 
