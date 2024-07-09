@@ -84,7 +84,7 @@
                 </ul>
             </div>
             <div>
-                <ul>
+                <ul class="nav-links">
                     <li>
                         <a
                             href="https://github.com/0Supa/uploader"
@@ -229,15 +229,17 @@
         display: flex;
         background-color: rgb(var(--bg_h));
         width: fit-content;
-        padding: 5px;
-        border-radius: 5px;
+        padding: 0.35rem 1rem 0.35rem 1rem;
+        border-radius: 0.45rem;
         gap: 2px;
         flex-direction: column;
+
+        outline: 1px solid rgb(var(--outl2));
 
         &[open] {
             background-color: rgb(var(--bg2));
             summary {
-                padding-bottom: 2px;
+                padding-bottom: 0.55rem;
                 // margin-bottom: 5px;
                 border-bottom: 2px solid rgb(var(--primary));
             }
@@ -272,6 +274,10 @@
         margin-right: auto;
     }
 
+    .nav-links {
+        gap: 0.35rem;
+    }
+
     .tooltip {
         cursor: help;
         text-decoration: underline dotted;
@@ -280,17 +286,16 @@
     .name {
         display: inline-block;
         margin: 0;
-        margin-bottom: 5px;
         overflow: auto;
         font-weight: 500;
         text-shadow: 1px 1px 1px rgb(var(--fg) / 0.3);
     }
 
     hr {
-        margin: 0;
-        margin-bottom: 5px;
+        margin: 1rem 0 1rem;
         border: 2px solid rgb(var(--primary));
-        border-radius: 5px 0 5px 5px;
+        border-radius: 0.45rem;
+        margin: 0.35rem 0 1rem 0;
     }
 
     ul {
@@ -318,9 +323,11 @@
         height: 100%;
         font-weight: 500;
         background-color: rgb(var(--bg2));
-        border-radius: 5px 5px 0 0;
+        border-radius: 0.25rem;
         align-items: center;
-        padding: 0 4px;
+        padding: 0 0.35rem;
+
+        outline: 1px solid rgb(var(--outl2));
 
         :global(.icon) {
             margin-right: 2px;

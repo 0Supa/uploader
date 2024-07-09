@@ -26,7 +26,7 @@
         color: rgb(var(--fg));
         border: 2px solid rgb(var(--primary));
         border-radius: 5px;
-        padding: 5px;
+        padding: 0.65rem;
         outline: none;
         word-wrap: break-word;
         overscroll-behavior: contain;
