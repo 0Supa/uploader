@@ -238,7 +238,6 @@
 
         &[open] {
             background-color: rgb(var(--bg2));
-            padding: 1rem 1rem 1rem 1rem;
             summary {
                 padding-bottom: 0.55rem;
                 // margin-bottom: 5px;
