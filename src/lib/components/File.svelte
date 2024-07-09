@@ -106,7 +106,7 @@
         padding: 10px 8px;
         background-color: rgb(var(--bg_h));
         border-radius: 10px;
-        // border: 2px solid rgb(var(--bg2));
+        border: 1px solid rgb(var(--outl2));
         border-left: 2px solid rgb(var(--primary));
 
         &:not(:last-child) {
@@ -118,7 +118,7 @@
             display: flex;
             font-size: 1.2rem;
             border-radius: 5px;
-            outline: 2px solid rgb(var(--bg2));
+            outline: 1px solid rgb(var(--outl1));
             margin: 2px 0;
 
             button {
@@ -228,7 +228,7 @@
             gap: 10px;
 
             button {
-                outline: 2px solid rgb(var(--bg2));
+                outline: 1px solid rgb(var(--outl1));
                 font-size: 0.9em;
                 padding: 0.25em 1.5em;
             }
