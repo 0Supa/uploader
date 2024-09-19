@@ -30,8 +30,8 @@
 
     .title :global(.icon) {
         vertical-align: middle;
-        width: 1em;
-        height: 1em;
+        width: 12pt;
+        height: 12pt;
         animation: pulse 0.8s ease-in infinite alternate;
     }
 

@@ -128,8 +128,8 @@
                 }
                 :global(.icon) {
                     vertical-align: middle;
-                    width: 1.8em;
-                    height: 1.8em;
+                    width: 18pt;
+                    height: 18pt;
                 }
             }
         }
