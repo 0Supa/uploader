@@ -152,7 +152,7 @@
                         bind:checked={$userSettings.fileContentDisposition}
                         on:change={saveSettings}
                     />
-                    Save remote file with its original name&nbsp;
+                    Share your file's original name&nbsp;
                     <span
                         class="tooltip"
                         title="Enabling this will show your file's original (local) name to other users in supported browsers; e.g. when saving."
@@ -229,7 +229,6 @@
         display: flex;
         background-color: rgb(var(--bg_h));
         width: fit-content;
-        padding: 0.35rem 1rem 0.35rem 1rem;
         border-radius: 0.45rem;
         gap: 2px;
         flex-direction: column;
@@ -239,7 +238,6 @@
         &[open] {
             background-color: rgb(var(--bg2));
             summary {
-                padding-bottom: 0.55rem;
                 // margin-bottom: 5px;
                 border-bottom: 2px solid rgb(var(--primary));
             }
@@ -247,11 +245,13 @@
 
         summary {
             cursor: pointer;
+            padding: 0.35rem 1rem 0.35rem 1rem;
         }
 
         .container {
             display: flex;
             flex-direction: column;
+            padding: 0.25rem 0.5rem;
         }
     }
 
