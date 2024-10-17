@@ -1,4 +1,5 @@
 <script>
+    import { browser } from "$app/environment";
     import { page } from "$app/stores";
     import { userSettings } from "$lib/userSettings";
 
@@ -31,9 +32,14 @@
 <div>
     <details open>
         <summary>ShareX</summary>
-        <p>
-            <a href={sharexConfigURL.toString()} data-umami-event="sharex-download">Click here</a> to download the ShareX 11.5+ config
-        </p>
+        {#if browser}
+            <p>
+                <a
+                    href={sharexConfigURL.toString()}
+                    data-umami-event="sharex-download">Click here</a
+                > to download the ShareX 11.5+ config
+            </p>
+        {/if}
     </details>
 </div>
 
@@ -46,7 +52,11 @@
             <table>
                 <tr>
                     <th>Request URL:</th>
-                    <td>{endpoints.upload}{!$userSettings.fileContentDisposition ? "?skip-cd=true" : ""}</td>
+                    <td
+                        >{endpoints.upload}{!$userSettings.fileContentDisposition
+                            ? "?skip-cd=true"
+                            : ""}</td
+                    >
                 </tr>
                 <tr>
                     <th>Form field:</th>
@@ -54,7 +64,9 @@
                 </tr>
                 <tr>
                     <th>Image link:</th>
-                    <td>{`{link}${$userSettings.appendFileExt ? "{ext}" : ""}`}</td>
+                    <td
+                        >{`{link}${$userSettings.appendFileExt ? "{ext}" : ""}`}</td
+                    >
                 </tr>
                 <tr>
                     <th>Deletion link:</th>
@@ -68,9 +80,17 @@
 <div>
     <details>
         <summary>
-            <a target="_blank" href="https://play.google.com/store/apps/details?id=com.flxrs.dankchat&ref=i.supa.codes" data-umami-event="dankchat-link">DankChat</a>
+            <a
+                target="_blank"
+                href="https://play.google.com/store/apps/details?id=com.flxrs.dankchat&ref=i.supa.codes"
+                data-umami-event="dankchat-link">DankChat</a
+            >
         </summary>
-        <p>Native Twitch chat client for mobile -- <br />Same configuration format as Chatterino, uploader defaults to <a target="_blank" href="https://kappa.lol/">kappa.lol</a>.</p>
+        <p>
+            Native Twitch chat client for mobile -- <br />Same configuration
+            format as Chatterino, uploader defaults to
+            <a target="_blank" href="https://kappa.lol/">kappa.lol</a>.
+        </p>
     </details>
 </div>
 
@@ -82,13 +102,26 @@
                 <tr>
                     <th>Upload:</th>
                     <td class="code">
-                        curl "{endpoints.upload}" -F "file=@/home/supa/kappa.png"
+                        curl "{endpoints.upload}" -F
+                        "file=@/home/supa/kappa.png"
                     </td>
                 </tr>
             </table>
             <div class="r">
                 <pre>content-type: application/json</pre>
-                <pre>{JSON.stringify({ id: "${id}", ext: ".png", type: "image/png", checksum: "${md5}", key: "${key}", link: `${$page.url.origin}/\${id}`, delete: `${$page.url.origin}/delete?\${key}` }, null, 4)}</pre>
+                <pre>{JSON.stringify(
+                        {
+                            id: "${id}",
+                            ext: ".png",
+                            type: "image/png",
+                            checksum: "${md5}",
+                            key: "${key}",
+                            link: `${$page.url.origin}/\${id}`,
+                            delete: `${$page.url.origin}/delete?\${key}`,
+                        },
+                        null,
+                        4,
+                    )}</pre>
             </div>
         </div>
         <div>
@@ -116,14 +149,33 @@
             </table>
             <div class="r">
                 <pre>content-type: application/json</pre>
-                <pre>{JSON.stringify({ id: "${id}", type: "${mimetype}", date: "${Number(unixUploadTimeMS)}", size: "${Number(bytes)}", checksums: { md5: "${md5}" }, name: "${filename} (nullable)" }, null, 4)}</pre>
+                <pre>{JSON.stringify(
+                        {
+                            id: "${id}",
+                            type: "${mimetype}",
+                            date: "${Number(unixUploadTimeMS)}",
+                            size: "${Number(bytes)}",
+                            checksums: { md5: "${md5}" },
+                            name: "${filename} (nullable)",
+                        },
+                        null,
+                        4,
+                    )}</pre>
             </div>
         </div>
     </details>
 </div>
 
 <div>
-    <p>Looking for a cool song/video queue manager for your Twitch chat?<br />Either way, check out <a href="https://chat.vote/playlist/?ref=i.supa.codes" target="_blank" data-umami-event="badoge-playlist-link">chat.vote/playlist</a>!</p>
+    <p>
+        Looking for a cool song/video queue manager for your Twitch chat?<br
+        />Either way, check out
+        <a
+            href="https://chat.vote/playlist/?ref=i.supa.codes"
+            target="_blank"
+            data-umami-event="badoge-playlist-link">chat.vote/playlist</a
+        >!
+    </p>
 </div>
 
 <style>
