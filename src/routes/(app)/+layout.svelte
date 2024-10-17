@@ -60,54 +60,38 @@
             </section>
         </Dialog>
 
-        <h1 class="name pride">{$page.url.hostname}</h1>
-
-        <nav>
-            <div class="nav-left">
-                <ul>
-                    <li>
-                        <a
-                            aria-current={$page.url.pathname === "/"
-                                ? "page"
-                                : undefined}
-                            href="/">Home</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            aria-current={$page.url.pathname === "/uploaders"
-                                ? "page"
-                                : undefined}
-                            href="/uploaders">Uploaders</a
-                        >
-                    </li>
-                </ul>
-            </div>
-            <div>
-                <ul class="nav-links">
-                    <li>
-                        <a
-                            href="https://github.com/0Supa/uploader"
-                            target="_blank">GitHub</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            class="support-btn"
-                            href="/"
-                            on:click={(e) => {
-                                e.preventDefault();
-                                donateDialog.showModal();
-                            }}
-                        >
-                            <Icon class="icon" src="/static/heart.svg"></Icon>
-                            Support
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <hr />
+        <header class="header">
+            <!-- Logo-name -->
+            <h1 class="header__name pride">{$page.url.hostname}</h1>
+            <!-- Navbar -->
+            <nav class="navbar">
+                <div class="navbar__tabs">
+                    <a href="/" class="navbar__tab"
+                    aria-current={$page.url.pathname === "/"
+                        ? "page"
+                        : undefined}>Home</a>
+                    <a href="/uploaders" class="navbar__tab"
+                    aria-current={$page.url.pathname === "/uploaders"
+                        ? "page"
+                        : undefined}>Uploaders</a>
+                </div>
+                <div class="navbar__tabs">
+                    <a href="https://github.com/0Supa/uploader" class="navbar__tab">
+                        GitHub
+                    </a>
+                    <a href="/" class="navbar__tab"
+                        on:click={(e) => {
+                            e.preventDefault();
+                            donateDialog.showModal();
+                        }}
+                    >
+                        Support
+                    </a>
+                </div>
+            </nav>
+            <!-- Hr -->
+            <hr class="hr">
+        </header>
 
         <noscript>JavaScript is required for this website.</noscript>
 
@@ -178,7 +162,7 @@
 
 <style lang="scss">
     :root {
-        --font-body: "Noto Sans", sans-serif, -apple-system, "Helvetica Neue";
+        --font-body: "Roboto", -apple-system, BlinkMacSystemFont, "Apple Color Emoji", "Segoe UI", Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     }
 
     main {
@@ -189,10 +173,6 @@
         background-color: rgb(var(--bg));
         font-family: var(--font-body);
         color: rgb(var(--fg));
-    }
-
-    h1 {
-        font-weight: 400;
     }
 
     [aria-current="page"] {
@@ -218,11 +198,6 @@
         .wrapper {
             width: 100%;
         }
-    }
-
-    .wrapper {
-        width: 800px;
-        padding: 10px;
     }
 
     .settings {
@@ -266,36 +241,107 @@
         margin: 5px 0;
     }
 
-    nav {
-        display: flex;
-    }
-
-    .nav-left {
-        margin-right: auto;
-    }
-
-    .nav-links {
-        gap: 0.35rem;
-    }
-
     .tooltip {
         cursor: help;
         text-decoration: underline dotted;
     }
 
-    .name {
-        display: inline-block;
-        margin: 0;
-        overflow: auto;
-        font-weight: 500;
-        text-shadow: 1px 1px 1px rgb(var(--fg) / 0.3);
+
+    .wrapper {
+        width: 700px;
+        padding: 10px;
     }
 
-    hr {
-        margin: 1rem 0 1rem;
+    /* Header */
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .header__name {
+        display: inline-block;
+        text-transform: uppercase;
+        margin: 10px 0 0;
+        padding: 0;
+        overflow: auto;
+        font-weight: 800;
+        font-size: 32px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    /* Navbar */
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0 6px;
+        width: 100%;
+    }
+
+    .navbar__tabs {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar__tab {
+        margin: 0 2px;
+        padding: 1px 8px;
+        border-radius: 4px;
+        color: rgb(var(--fg));
+
+        &:hover {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        &:visited {
+            text-decoration: none;
+        }
+    }
+
+    .navbar__tab[aria-current="page"] {
+        text-decoration: none;
         border: 2px solid rgb(var(--primary));
+        color: rgb(var(--fg));
+        margin: 0;
+    }
+
+    .navbar__button {
+        height: 27px;
+        border-color: rgb(var(--primary));
+        display: flex;
+        align-items: center;
+    }
+
+    .button__icon {
+        width: 18px;
+        height: 18px;
+        fill: white;
+
+        &:hover {
+            fill: rgb(var(--primary));
+        }
+    }
+
+
+    .navbar__links {
+        list-style: none;
+    }
+
+    .hr {
+        margin: 0 0 10px;
+        background-color: rgb(var(--primary));
         border-radius: 0.45rem;
-        margin: 0.35rem 0 1rem 0;
+        border: none;
+        height: 2px;
+        width: 100%;
     }
 
     ul {
