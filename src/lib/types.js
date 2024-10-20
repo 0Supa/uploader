@@ -9,6 +9,7 @@
  * @property {String} key
  * @property {Number} date
  * @property {String} checksum
+ * @property {String?} origin
  */
 
 /** @typedef {"catppuccin" | "dark" | "light" | "amoled"} Theme */

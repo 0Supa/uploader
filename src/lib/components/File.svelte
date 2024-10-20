@@ -57,7 +57,7 @@
         }
     };
 
-    $: fileUrl = `${window.location.origin}/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`;
+    $: fileUrl = `${file.origin || window.location.origin}/${file.id}${$userSettings.appendFileExt ? file.ext : ""}`;
 
     onMount(async () => {
         if (isNewUpload) {

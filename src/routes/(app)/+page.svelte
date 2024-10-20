@@ -120,6 +120,7 @@
                                 key: res.key,
                                 date: Date.now(),
                                 checksum: res.checksum,
+                                origin: res.origin,
                             },
                             ...arr,
                         ];
