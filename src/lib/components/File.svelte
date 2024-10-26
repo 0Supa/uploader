@@ -125,6 +125,9 @@
 
             button {
                 border-radius: 0;
+                padding: 0;
+                width: 32px;
+
                 &:last-child {
                     border-radius: 0 5px 5px 0;
                 }
@@ -162,8 +165,6 @@
         border: none;
         color: rgb(var(--fg2));
         border-radius: 5px;
-        padding: 0;
-        width: 32px;
 
         &:hover {
             background-color: rgba(var(--bg2), 0.2);
