@@ -259,13 +259,7 @@
 
 <div class="uploaded-files">
     {#each $uploadedFiles as file (file.id)}
-        <FileDisplay
-            isNewUpload={(() => {
-                return file.date > mountDate;
-            })()}
-            {notifyError}
-            {file}
-        ></FileDisplay>
+        <FileDisplay isNewUpload={file.date > mountDate} {notifyError} {file} />
     {/each}
 </div>
 
