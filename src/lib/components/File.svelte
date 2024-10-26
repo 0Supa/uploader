@@ -84,12 +84,14 @@
 <div class="file">
     <div class="name" title={file.name}>{file.name}</div>
     <div class="details">
-        <input tabindex="0" aria-label="Open link" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value={fileUrl} />
-        <button class="alert" on:click={deleteFile}>
+        <input tabindex="0" bind:this={urlInput} on:focus={copy} on:select={copy} on:click={copy} class="link" type="text" readonly value={fileUrl} />
+        <button aria-label="Delete link" class="alert" on:click={deleteFile}>
             <Icon class="icon" src="/static/delete.svg"></Icon>
         </button>
-        <button class="default" aria-label="Delete" on:click={() => window.open(fileUrl, "file-link")}>
-            <Icon class="icon" src="/static/open_in_new.svg"></Icon>
+        <button aria-label="Open link" class="default">
+            <a href={fileUrl} target="file-link" style="display: block; height: 100%; align-content: center;">
+                <Icon class="icon" src="/static/open_in_new.svg"></Icon>
+            </a>
         </button>
     </div>
     <div class="footer">
@@ -160,6 +162,8 @@
         border: none;
         color: rgb(var(--fg2));
         border-radius: 5px;
+        padding: 0;
+        width: 32px;
 
         &:hover {
             background-color: rgba(var(--bg2), 0.2);
