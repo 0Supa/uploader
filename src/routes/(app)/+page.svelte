@@ -311,7 +311,9 @@
         margin: 20px 0;
         display: flex;
         flex-direction: column;
-        width: 320px;
+        width: fit-content;
+        min-width: 320px;
+        max-width: 350px;
     }
 
     .terms {

@@ -169,6 +169,16 @@
                     />
                     Entirely strip Exif data from image
                 </label>
+                <label class="option">
+                    <input
+                        type="checkbox"
+                        id="file-showthumb"
+                        name="file-showthumb"
+                        bind:checked={$userSettings.showThumbnails}
+                        on:change={saveSettings}
+                    />
+                    Show file thumbnails
+                </label>
             </div>
         </details>
 

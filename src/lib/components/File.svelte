@@ -97,7 +97,23 @@
     <div class="footer">
         <div class="mimetype">{file.type}</div>
         <div class="date">{new Date(file.date).toLocaleString("sv", { timeZoneName: "shortOffset" })}</div>
-        <div>{file.checksum}</div>
+        <div>
+            {#if $userSettings.showThumbnails}
+                <a href={fileUrl} target="_blank">
+                    <img
+                        class="thumbnail"
+                        alt="File Thumbnail"
+                        src="//kappa.lol/t/{file.id}"
+                        loading="lazy"
+                        on:error={function () {
+                            this.style = "display: none;";
+                        }}
+                    />
+                </a>
+            {:else}
+                <span>{file.checksum}</span>
+            {/if}
+        </div>
     </div>
 </div>
 
@@ -213,6 +229,12 @@
 
     .mimetype {
         float: right;
+    }
+
+    .thumbnail {
+        max-width: 100%;
+        height: auto;
+        margin-top: 5px;
     }
 
     .delete-dialog {

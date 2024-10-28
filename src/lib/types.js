@@ -20,6 +20,7 @@
  * @property {Boolean} rememberFileHistory
  * @property {Boolean} fileContentDisposition
  * @property {Boolean} stripExif
+ * @property {Boolean} showThumbnails
  * @property {Theme} theme
  */
 

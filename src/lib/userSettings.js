@@ -6,6 +6,7 @@ const defaultSettings = {
     "rememberFileHistory": true,
     "fileContentDisposition": true,
     "stripExif": false,
+    "showThumbnails": true,
     "theme": "dark"
 }
 
