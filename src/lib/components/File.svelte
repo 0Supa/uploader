@@ -103,7 +103,7 @@
                     <img
                         class="thumbnail"
                         alt="File Thumbnail"
-                        src="//kappa.lol/t/{file.id}"
+                        src="/t/{file.id}"
                         loading="lazy"
                         on:error={function () {
                             this.style = "display: none;";
